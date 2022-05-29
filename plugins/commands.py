@@ -26,7 +26,7 @@ async def start(client, message):
                 InlineKeyboardButton('❇️ Add Me To Your Groups ❇️', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
             ],
             [
-                InlineKeyboardButton('♻️ Updates Channel ♻️', url='https://t.me/m_house786')
+                InlineKeyboardButton('♻️ Updates Channel ♻️', url='https://t.me/+4ChjzEO0l-44Y2Rl')
             ],
             [
                 InlineKeyboardButton('❇️ Help ❇️', url=f"https://t.me/{temp.U_NAME}?start=help"),
@@ -47,11 +47,11 @@ async def start(client, message):
         buttons = [[
             InlineKeyboardButton('❇️ Add Me To Your Groups ❇️', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
             ],[
-            InlineKeyboardButton('💠 𝗖𝗵𝗮𝗻𝗻𝗲𝗹 💠', url='https://t.me/+ZeZNvt43B4o3ZmJl'),
-            InlineKeyboardButton('💠 UPDATES 💠', url='https://t.me/m_house786')
+            InlineKeyboardButton('💠 𝗖𝗵𝗮𝗻𝗻𝗲𝗹 💠', url='https://t.me/+4ChjzEO0l-44Y2Rl'),
+            InlineKeyboardButton('💠 UPDATES 💠', url='https://t.me/+4ChjzEO0l-44Y2Rl')
             ],[
             InlineKeyboardButton('♻️ Help ♻️', callback_data='help'),
-            InlineKeyboardButton('🌷Join my group', url='https://t.me/+gXuMKXOWm1UyOTdl'),
+            InlineKeyboardButton('🌷Join my group', url='https://t.me/+T8LhrHaZYVo4YjY1'),
             InlineKeyboardButton('♻️ About ♻️', callback_data='about')
             ],[
             InlineKeyboardButton('Search', switch_inline_query_current_chat=''),
@@ -93,11 +93,11 @@ async def start(client, message):
         buttons = [[
             InlineKeyboardButton('✳️ Add Me To Your Groups ✳️', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
             ],[
-            InlineKeyboardButton('💠 𝗖𝗵𝗮𝗻𝗻𝗲𝗹 💠', url='https://t.me/+ZeZNvt43B4o3ZmJl'),
-            InlineKeyboardButton('💠 UPDATES 💠', url='https://t.me/m_house786')
+            InlineKeyboardButton('💠 𝗖𝗵𝗮𝗻𝗻𝗲𝗹 💠', url='https://t.me/+4ChjzEO0l-44Y2Rl'),
+            InlineKeyboardButton('💠 UPDATES 💠', url='https://t.me/+4ChjzEO0l-44Y2Rl')
             ],[
             InlineKeyboardButton('♻️ HΞLᎮ ♻️', callback_data='help'),
-            InlineKeyboardButton('🌷Join my group', url='https://t.me/+gXuMKXOWm1UyOTdl'),
+            InlineKeyboardButton('🌷Join my group', url='https://t.me/+T8LhrHaZYVo4YjY1'),
             InlineKeyboardButton('♻️ ΛBOUT ♻️', callback_data='about')
             ],[
             InlineKeyboardButton('Search', switch_inline_query_current_chat=''),
