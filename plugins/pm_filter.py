@@ -39,16 +39,17 @@ async def give_filter(client, message):
 
 @Client.on_callback_query(filters.regex(r"^next"))
 async def next_page(bot, query):
+
     ident, req, key, offset = query.data.split("_")
     if int(req) not in [query.from_user.id, 0]:
-        return await query.answer("oKda", show_alert=True)
+        return await query.answer(f"⚠️ Hey, {query.from_user.first_name}.. \n\nSearch Your Own File, \n\n⚠️ Don't Click Others Results 😬", show_alert=True)
     try:
         offset = int(offset)
     except:
         offset = 0
     search = BUTTONS.get(key)
     if not search:
-        await query.answer("You are using one of my old messages, please send the request again.", show_alert=True)
+        await query.answer(f"⚠️ Hey, {query.from_user.first_name}! You are using one of my old messages, send the request again ⚠️",show_alert=True)
         return
 
     files, n_offset, total = await get_search_results(search, offset=offset, filter=True)
@@ -107,11 +108,8 @@ async def next_page(bot, query):
                 InlineKeyboardButton("NEXT ⏩", callback_data=f"next_{req}_{key}_{n_offset}")
             ],
         )
-        btn.append(
-            [InlineKeyboardButton("❌CLOSE❌", callback_data="close_data")]
-        )
     btn.insert(0, [
-        InlineKeyboardButton(text="⚠️ 𝐉𝐨𝐢𝐧 𝐌𝐨𝐯𝐢𝐞𝐬 Group ⚠️", url="https://t.me/+gXuMKXOWm1UyOTdl")
+        InlineKeyboardButton('🙏 Subscribe my YouTube channel 🙏', url='https://youtube.com/channel/UCPaHDqWf3D3w2nxb8p3sr4A')
     ])
     try:
         await query.edit_message_reply_markup(
@@ -126,8 +124,8 @@ async def next_page(bot, query):
 async def advantage_spoll_choker(bot, query):
     _, user, movie_ = query.data.split('#')
     if int(user) != 0 and query.from_user.id != int(user):
-        return await query.answer("okDa", show_alert=True)
-    if movie_ == "close_spellcheck":
+        return await query.answer(f"⚠️ Hey, {query.from_user.first_name}.. \n\nSearch Your Own File, \n\n⚠️ Don't Click Others Results 😬", show_alert=True)
+    if movie_  == "close_spellcheck":
         return await query.message.delete()
     movies = SPELL_CHECK.get(query.message.reply_to_message.message_id)
     if not movies:
@@ -141,7 +139,7 @@ async def advantage_spoll_choker(bot, query):
             k = (movie, files, offset, total_results)
             await auto_filter(bot, query, k)
         else:
-            k = await query.message.edit('♻️ This Movie Not Found my Database ♾♾♾♾♾♾♾♾♾♾♾♾♾♾ ♻️ Request to admin 👉 @m_admins')
+            k = await query.message.edit('<b>♻️ This Movie Not Found my Database \n\n♻️ Request to admin 👉 @m_admins</b>')
             await asyncio.sleep(15)
             await k.delete()
 
@@ -379,7 +377,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
     elif query.data.startswith("checksub"):
         if AUTH_CHANNEL and not await is_subscribed(client, query):
-            await query.answer("I Like Your Smartness, But Don't Be Oversmart 😒...        😳 bro niche diye gye updates channel ko join karo  jab tak aap updates channel join nahi karte tab tak bot apko movie nahi dega! ", show_alert=True)
+            await query.answer("I Like Your Smartness, But Don't Be Oversmart 😒...\n\n 😳 bro niche diye gye updates channel ko join karo  jab tak aap updates channel join nahi karte tab tak bot apko movie nahi dega! ", show_alert=True)
             return
         ident, file_id = query.data.split("#")
         files_ = await get_file_details(file_id)
@@ -412,13 +410,16 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
             InlineKeyboardButton('✳️ Add Me To Your Groups ✳️', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
             ],[
-            InlineKeyboardButton('💠 CHANNEL 💠', url='https://t.me/+ZeZNvt43B4o3ZmJl'),
-            InlineKeyboardButton('☎️ CONTACT ME', url='https://t.me/sahid_malik'),
+            InlineKeyboardButton('💠 𝗖𝗵𝗮𝗻𝗻𝗲𝗹 💠', url='https://t.me/+ZeZNvt43B4o3ZmJl'),
+            InlineKeyboardButton('☎️ 𝗢𝗪𝗡𝗘𝗥', url='https://t.me/sahid_malik'),
             InlineKeyboardButton('💠 UPDATES 💠', url='https://t.me/m_house786')
             ],[
             InlineKeyboardButton('♻️ Help ♻️', callback_data='help'),
             InlineKeyboardButton('🌷Join my group', url='https://t.me/+gXuMKXOWm1UyOTdl'),
             InlineKeyboardButton('♻️ About ♻️', callback_data='about')
+            ],[
+            InlineKeyboardButton('Search', switch_inline_query_current_chat=''),
+            InlineKeyboardButton('❤️ Donation ❤️', callback_data='dinette')
             ],[
             InlineKeyboardButton('✅ Subscribe my YouTube channel ✅', url='https://youtube.com/channel/UCPaHDqWf3D3w2nxb8p3sr4A')
         ]]
@@ -453,6 +454,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ], [
             InlineKeyboardButton('🏠 𝗛𝗼𝗺𝗲 🏠', callback_data='start'),
             InlineKeyboardButton('🔐 𝗖𝗹𝗼𝘀𝗲 🔐', callback_data='close_data')
+        ], [
+            InlineKeyboardButton('❤️ Donation ❤️', callback_data='malik'),
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
@@ -467,6 +470,26 @@ async def cb_handler(client: Client, query: CallbackQuery):
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
             text=script.SOURCE_TXT,
+            reply_markup=reply_markup,
+            parse_mode='html'
+        )
+    elif query.data == "malik":
+        buttons = [[
+            InlineKeyboardButton('🚶 𝗕𝗮𝗰𝗸 🚶', callback_data='about')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text=script.MALIK_TXT,
+            reply_markup=reply_markup,
+            parse_mode='html'
+        )
+    elif query.data == "dinette":
+        buttons = [[
+            InlineKeyboardButton('🚶 𝗕𝗮𝗰𝗸 🚶', callback_data='start')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text=script.DINETTE_TXT,
             reply_markup=reply_markup,
             parse_mode='html'
         )
@@ -684,7 +707,7 @@ async def auto_filter(client, msg, spoll=False):
             [InlineKeyboardButton(text="🌹 𝗣𝗮𝗴𝗲 1/1", callback_data="pages")]
         )
     btn.insert(0, [
-        InlineKeyboardButton(text="⚠️ 𝐉𝐨𝐢𝐧 𝐌𝐨𝐯𝐢𝐞𝐬 𝙂𝙧𝙤𝙪𝙥 ⚠️", url="https://t.me/+gXuMKXOWm1UyOTdl")
+        InlineKeyboardButton('🙏 Subscribe my YouTube channel 🙏', url='https://youtube.com/channel/UCPaHDqWf3D3w2nxb8p3sr4A')
     ])
     imdb = await get_poster(search, file=(files[0]).file_name) if settings["imdb"] else None
     TEMPLATE = settings['template']
@@ -721,7 +744,7 @@ async def auto_filter(client, msg, spoll=False):
             **locals()
         )
     else:
-        cap = f"Here is what i found for your query {search}"
+        cap = f"<b>🖥 Movie Name: {search}... \n📡 Group: {message.chat.title} \n🧑‍💼 Requested By: {msg.from_user.mention}</b>"
     if imdb and imdb.get('poster'):
         try:
             await message.reply_photo(photo=imdb.get('poster'), caption=cap[:1024],
@@ -789,8 +812,11 @@ async def advantage_spell_chok(msg):
         )
     ] for k, movie in enumerate(movielist)]
     btn.append([InlineKeyboardButton(text="Close", callback_data=f'spolling#{user}#close_spellcheck')])
-    await msg.reply("CHECK YOUR MOVIE ON THE GIVEN LIST AND SELECT YOUR MOVIE.. ━━━━━━━━━━━━━━━━━       दी गई सूची में अपनी फिल्म देखें और अपनी फिल्म चुनें 👇👇👇 ",
+    m = await msg.reply("<b>CHECK YOUR MOVIE ON THE GIVEN LIST AND SELECT YOUR MOVIE.. \n\n दी गई सूची में अपनी फिल्म देखें और अपनी फिल्म चुनें 👇👇👇</b>",
                     reply_markup=InlineKeyboardMarkup(btn))
+    await asyncio.sleep(600)
+    await m.delete()
+
 
 
 async def manual_filters(client, message, text=False):
