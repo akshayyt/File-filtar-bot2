@@ -16,7 +16,7 @@
       "inline"
     ],
     "website": "https://github.com/malik7983/file-filter-bot",
-    "repository": "https://github.com/akshayyt/file-filtar-bot",
+    "repository": "https://github.com/akshayyt/file-filtar-bot2",
     "env": {
         "BOT_TOKEN": {
             "description": "Your bot token.",
